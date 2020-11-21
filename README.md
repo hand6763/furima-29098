@@ -43,8 +43,8 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :item
-- has_many :purchas
+- has_many :items
+- has_many :purchases
 
 ## items テーブル
 
@@ -58,7 +58,7 @@ Things you may want to cover:
 | shipping_area_id | integer    | null: false         |          
 | shipping_day_id  | integer    | null: false         |          
 | price            | integer    | null: false         |          
-| users_id         | references | foreign_key: true   |
+| users            | references | foreign_key: true   |
 
 ### Association
 
@@ -71,8 +71,8 @@ Things you may want to cover:
 
 | Column   | Type       | Options           |
 | ------   | ------     | -----------       |
-| users_id | references | foreign_key: true |
-| items_id | references | foreign_key: true |
+| users    | references | foreign_key: true |
+| items    | references | foreign_key: true |
 
 
 ### Association
@@ -88,11 +88,11 @@ Things you may want to cover:
 | Column        | Type       | Options           |
 | ------        | ------     | -----------       |
 | postal_code   | string     | null: false       |
-| prefecture    | string     | null: false       |
+| prefecture_id | integer    | null: false       |
 | municipality  | string     | null: false       |
 | adress        | string     | null: false       |
 | building_name | string     |                   |
-| purchases_id  | references | foreign_key: true |
+| purchases     | references | foreign_key: true |
 
 
 ### Association
