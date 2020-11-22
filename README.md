@@ -58,12 +58,12 @@ Things you may want to cover:
 | shipping_area_id | integer    | null: false         |          
 | shipping_day_id  | integer    | null: false         |          
 | price            | integer    | null: false         |          
-| users            | references | foreign_key: true   |
+| user             | references | foreign_key: true   |
 
 ### Association
 
 - belongs_to :user
-- has_one :purchas
+- has_one :purchase
 
 
 
@@ -71,8 +71,8 @@ Things you may want to cover:
 
 | Column   | Type       | Options           |
 | ------   | ------     | -----------       |
-| users    | references | foreign_key: true |
-| items    | references | foreign_key: true |
+| user     | references | foreign_key: true |
+| item     | references | foreign_key: true |
 
 
 ### Association
@@ -92,9 +92,10 @@ Things you may want to cover:
 | municipality  | string     | null: false       |
 | adress        | string     | null: false       |
 | building_name | string     |                   |
-| purchases     | references | foreign_key: true |
+| phone_number  | string     | null: false       |
+| purchase      | references | foreign_key: true |
 
 
 ### Association
 
-- belongs_to :purchas
+- belongs_to :purchase
