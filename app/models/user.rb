@@ -11,7 +11,5 @@ class User < ApplicationRecord
   validates :sei_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :mei_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :email, uniqueness: true
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])\w{6}\z/ }
-
-
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)\w{6}\z/ }
 end
