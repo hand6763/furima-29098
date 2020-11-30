@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
       it 'passwordが半角英数字混合でないと登録できない' do
         @user.password = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid')
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
         @user.password_confirmation = ''
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
       it 'seiが全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.sei = 'aa'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Sei is invalid')
+        expect(@user.errors.full_messages).to include('Sei Full-width characters')
       end
       it 'meiが空では登録できない' do
         @user.mei = ''
@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
       it 'meiが全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.mei = 'aa'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Mei is invalid')
+        expect(@user.errors.full_messages).to include('Mei Full-width characters')
       end
       it 'sei_kanaが空では登録できない' do
         @user.sei_kana = ''
@@ -79,7 +79,7 @@ RSpec.describe User, type: :model do
       it 'sei_kanaが全角（カタカナ）でないと登録できない' do
         @user.sei_kana = 'ああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Sei kana is invalid')
+        expect(@user.errors.full_messages).to include('Sei kana Full-width katakana characters')
       end
       it 'mei_kanaが空では登録できない' do
         @user.mei_kana = ''
@@ -89,7 +89,7 @@ RSpec.describe User, type: :model do
       it 'mei_kanaが全角（カタカナ）でないと登録できない' do
         @user.mei_kana = 'ああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Mei kana is invalid')
+        expect(@user.errors.full_messages).to include('Mei kana Full-width katakana characters')
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''
