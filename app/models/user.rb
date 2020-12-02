@@ -20,6 +20,5 @@ class User < ApplicationRecord
   
   end
 
-  validates :email, uniqueness: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)\w{6}\z/, message: "Include both letters and numbers" }
 end
