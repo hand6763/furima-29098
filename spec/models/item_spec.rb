@@ -7,14 +7,14 @@ RSpec.describe Item, type: :model do
 
   describe '商品を出品する' do
     context '商品出品がうまくいくとき' do
-      it 'imageとname,explanation,category_id,status_id,deliver_id,shipping_area_id,shippng_day_id,price,userが存在すれば登録できる' do
+      it 'imageとname,explanation,category_id,status_id,deliver_id,shipping_area_id,shippng_day_id,priceが存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
 
     context '商品出品がうまくいかないとき' do
       it 'imageが空だと登録できない' do
-        @item.image = ''
+        @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
@@ -28,10 +28,35 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
-      it 'category_idが空だと登録できない' do
-        @item.category_id = ''
+      it 'categoryが選択されていないと登録できない' do
+        @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("CategoryId can't be blank")
+        expect(@item.errors.full_messages).to include("Category Select")
+      end
+      it 'statusが選択されていないと登録できない' do
+        @item.status_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status Select")
+      end
+      it 'deliver_feeが選択されていないと登録できない' do
+        @item.deliver_fee_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Deliver fee Select")
+      end
+      it 'shipping_areaが選択されていないと登録できない' do
+        @item.shipping_area_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping area Select")
+      end
+      it 'shipping_dayが選択されていないと登録できない' do
+        @item.shipping_day_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day Select")
+      end
+      it 'priceが空だと登録できない' do
+        @item.price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
     end
   end
