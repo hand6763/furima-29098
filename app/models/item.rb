@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
-    with_options numericality: { greater_than: 300, message: "Out of setting range" } do
+    with_options numericality: { greater_than_or_wqual_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range" } do
       validates :price
     end
   end
