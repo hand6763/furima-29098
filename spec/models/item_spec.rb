@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品を出品する' do
     context '商品出品がうまくいくとき' do
-      it 'imageとname,explanation,category_id,status_id,deliver_id,shipping_area_id,shippng_day_id,priceが存在すれば登録できる' do
+      it 'imageとname,explanation,category_id,status_id,deliver_id,prefecture_id,shippng_day_id,priceが存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -43,8 +43,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Deliver fee Select')
       end
-      it 'shipping_areaが選択されていないと登録できない' do
-        @item.shipping_area_id = 1
+      it 'prefectureが選択されていないと登録できない' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping area Select')
       end

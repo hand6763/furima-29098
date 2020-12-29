@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
 
   def create
     @order_address =OrderAddress.new(order_params)
-    if @order.valid?
-      @order.save
+    if @order_address.valid?
+      @order_address.save
       return redirect_to root_path
     else
       render 'index'
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:price)
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number,)
   end
   
 end
