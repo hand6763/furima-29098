@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :token, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :token, :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :order_id
 
   with_options presence: true do
     validates :municipality, :address, :token
@@ -12,7 +12,9 @@ class OrderAddress
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
    def save
-    Order.create
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number)
+    order = Order.create!(user_id: user_id, item_id: item_id)
+
+
+    Address.create!(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building_name: building_name, phone_number: phone_number, order_id: order.id)
    end
 end

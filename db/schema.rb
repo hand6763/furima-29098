@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_12_27_061724) do
     t.string "address", null: false
     t.string "building_name"
     t.string "phone_number", null: false
+    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
